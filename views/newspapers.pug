@@ -6,23 +6,7 @@ block content
   div(class="container-fluid")
         div(class="row")
             -
-                let newspapers = [
-                    {
-                        "name": "The Times of India",
-                        "language": "English",
-                        "price": "5"                        
-                    },
-                    {
-                        "name": "Sakshi",
-                        "language": "Telugu",
-                        "price": "3"
-                    },
-                    {
-                        "name": "Patrika",
-                        "language": "Hindi",
-                        "price": "4"
-                    },                   
-                ]
+                let newspapers = results
             each np, index in newspapers 
                 div(class="col-sm-2" onclick=`buy(${index})`) #{np.name} #{np.language} #{np.price}
             script.

@@ -1,9 +1,7 @@
 var express = require('express');
+const newspaper_controllers=require('../controllers/newspaper');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('newspapers', { title: 'Search Results newspapers' });
-});
-
+router.get('/', newspaper_controllers.newspaper_view_all_Page);
 module.exports = router;
