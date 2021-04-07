@@ -1,7 +1,12 @@
 var Newspaper = require('../models/newspaper');
 // List of all Newspapers
-exports.newspaper_list = function(req, res) {
-        res.send('NOT IMPLEMENTED: Newspaper list');    
+exports.newspaper_list = async function(req, res) {
+    try {
+        theNewspapers = await Newspaper.find();
+        res.send(theNewspapers);
+    } catch (error) {
+        res.error(500,`{"error": ${error}}`);
+    }
 };
 // for a specific Newspaper.
 exports.newspaper_detail = function(req, res) {
