@@ -43,9 +43,22 @@ exports.newspaper_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Newspaper delete DELETE ' + req.params.id);
 };
 // Handle Newspaper update form on PUT.
-exports.newspaper_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Newspaper update PUT' + req.params.id);
-};
+exports.newspaper_update_put = async function(req, res) {
+        console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+        try {
+            let toUpdate = await Newspaper.findById( req.params.id)
+            // Do updates of properties
+            if(req.body.name) toUpdate.name = req.body.name;
+            if(req.body.language) toUpdate.language = req.body.language;
+            if(req.body.price) toUpdate.price = req.body.price;
+            let result = await toUpdate.save();
+            console.log("Sucess " + result)
+            res.send(result)
+        } catch (err) {
+            res.status(500)
+            res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+        }
+    };
 // VIEWS
 // Handle a show all view
 exports.newspaper_view_all_Page = async function(req, res) {
