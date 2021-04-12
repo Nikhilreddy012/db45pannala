@@ -103,4 +103,18 @@ exports.newspaper_create_Page =  function(req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+// Handle building the view for updating a newspaper.
+// query provides the id
+exports.newspaper_update_Page =  async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+        let result = await Newspaper.findById(req.query.id)
+        res.render('newspaperupdate', { title: 'Newspaper Update', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
 
