@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+  - let newspaperid = toShow._id
+  - let name = toShow.name
+  - let language = toShow.language
+  - let price = toShow.price
+  div
+    div.row
+      div(class='newspaperAttr mr-3') Newspaper ID is:
+      div #{newspaperid}
+    div.row
+      div(class='newspaperAttr mr-3') Newspaper Name is:
+      div #{name}
+    div.row
+      div(class='newspaperAttr mr-3') Newspaper Language is:
+      div #{language}
+    div.row
+      div(class='newspaperAttr mr-3') Newspaper Price is:
+      div #{price}

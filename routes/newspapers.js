@@ -4,4 +4,6 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', newspaper_controllers.newspaper_view_all_Page);
+/* GET detail newspaper page */
+router.get('/detail', newspaper_controllers.newspaper_view_one_Page);
 module.exports = router;
