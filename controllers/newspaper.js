@@ -39,8 +39,16 @@ exports.newspaper_create_post = async function(req, res) {
     }
 };
 // Handle Newspaper delete form on DELETE.
-exports.newspaper_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Newspaper delete DELETE ' + req.params.id);
+exports.newspaper_delete = async function(req, res) {
+    console.log("delete "  + req.params.id)
+    try {
+        result = await Newspaper.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 // Handle Newspaper update form on PUT.
 exports.newspaper_update_put = async function(req, res) {
