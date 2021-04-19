@@ -7,9 +7,11 @@ block content
         div(class="row")
             -
                 let newspapers = results
-            each np, index in newspapers 
-                div(class="col-sm-2" onclick=`buy(${index})`) #{np.name} #{np.language} #{np.price}
+            each np in newspapers 
+                - let destination = `dispatch(\"/newspapers/update?id=${np._id}\")`
+                div(class="row-sm-2" class='m-1') Newspaper #{np.name}(#{np.language}) is #{np.price}
+                    button(class="btn-primary ml-1", onclick=destination) Update
             script.
-                function buy(itemNo){
-                    alert(`You purchased Item ${itemNo+1}`)
+                function dispatch(path){
+                    window.location.href = path
                 }
