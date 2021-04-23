@@ -36,7 +36,7 @@ exports.newspaper_create_post = async function(req, res) {
     }
     catch(err){
         res.status(500)
-        res.send(`{"error": Error deleting ${err}}`);
+        res.send(`{"error": Error creating ${err}}`);
     }
 };
 // Handle Newspaper delete form on DELETE.

@@ -1,6 +1,9 @@
 const mongoose = require("mongoose")
 const newspaperSchema = mongoose.Schema({
-name: String,
+name: {
+    type: String,
+    minLength: 5
+},
 language: String,
 price: {
     type: Number,
