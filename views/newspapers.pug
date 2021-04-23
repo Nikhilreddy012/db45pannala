@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  - let create = `dispatch(\"/newspapers/create\")`
+  button.btn(class="btn-primary mb-2" onclick=create) Add a Newspaper
   h1= title
   
   div(class="container-fluid")
@@ -9,8 +11,13 @@ block content
                 let newspapers = results
             each np in newspapers 
                 - let destination = `dispatch(\"/newspapers/update?id=${np._id}\")`
+                - let detail = `dispatch(\"/newspapers/detail?id=${np._id}\")`
+                - let delt = `dispatch(\"/newspapers/delete?id=${np._id}\")`
                 div(class="row-sm-2" class='m-1') Newspaper #{np.name}(#{np.language}) is #{np.price}
+                    button.btn(class="btn-success ml-1", onclick=detail) Detail
                     button.btn(class="btn-primary ml-1", onclick=destination) Update
+                    button.btn(class="btn-danger ml-1", onclick=delt) Delete
+                    but
             script.
                 function dispatch(path){
                     window.location.href = path
