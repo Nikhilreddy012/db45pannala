@@ -1,14 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p This is my second #{title} server.
-  button(type='button' class='btn btn-primary btn-md' onclick='update()') Press Me
-  div(id='target') Display
-  script.
-    let client_count = 0;
-    function update(){
-      client_count++
-      document.getElementById("target").innerHTML = `Value now ${client_count}`
-    }
-  a(href="newspapers") Go to Newspapers page
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/newspapers") Take me to newspapers
+    br
+    a(href="/logout") Logout
